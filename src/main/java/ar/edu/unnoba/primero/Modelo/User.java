@@ -2,7 +2,7 @@ package ar.edu.unnoba.primero.Modelo;
 
 import javax.persistence.*;
 import java.util.Date;
-
+/*lala*/
 @Entity
 @Table(name="Users")
 public class User {
