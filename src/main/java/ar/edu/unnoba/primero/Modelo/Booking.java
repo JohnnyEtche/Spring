@@ -1,7 +1,10 @@
 package ar.edu.unnoba.primero.Modelo;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Booking")
@@ -9,18 +12,24 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long booking_id;
+    @NotNull
     @OneToOne
     @JoinColumn(name="user_id")
     private User guest;
+    @NotNull
     private Date checkIn;
+    @NotNull
     private Date checkout;
+    @NotNull
     private Date createAt;
-    @OneToOne
+    @ManyToOne
+    @NotNull
     @JoinColumn(name = "room_id")
     private Room room;
     private Boolean breackfastIncluded;
     private Boolean parking;
     private Boolean freeCancelation;
+    @NotNull
     private float cost;
 
     public long getBooking_id() {

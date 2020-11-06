@@ -1,5 +1,7 @@
 package ar.edu.unnoba.primero.Modelo;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,11 +11,15 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long payment_id;
+    @NotNull
     private Date createdAt;
-    @OneToOne
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "booking_id")
     private Booking booking;
+    @NotNull
     private String card;
+    @NotNull
     private String cardNumber;
 
     public long getPayment_id() {

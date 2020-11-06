@@ -1,5 +1,7 @@
 package ar.edu.unnoba.primero.Modelo;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Date;
 /*lala*/
@@ -9,11 +11,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long user_id;
+    @NotNull
     private Date birthDate;
+    @NotNull
     private String email;
+    @NotNull
     private String password;
+    @NotNull
     private String nationality;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
 
     public long getUser_id() {
