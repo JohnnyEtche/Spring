@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/Users")
+@RequestMapping("/users")
 public class UserController {
 
     private IUserService userService;
@@ -24,13 +24,13 @@ public class UserController {
     @GetMapping("/new")
     public String userNew(Model model){
         model.addAttribute("user",new User());
-        return "/Users/new";
+        return "/users/new";
     }
 
     @PostMapping
     public String create(@ModelAttribute User user){
         userService.create(user);
-        return "redirect:/Users";
+        return "redirect:/users";
     }
 }
 
