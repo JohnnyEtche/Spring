@@ -22,6 +22,17 @@ public class UserServiceImp implements IUserService, UserDetailsService {
         return user;
     }
 
+//    @Override
+//    public boolean create(User user) {
+//
+//        if (repository.findByEmail(user.getEmail()) == null) {
+////            user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+//            user = repository.save(user);
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return repository.findByEmail(email);
