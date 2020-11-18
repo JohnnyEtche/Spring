@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +18,11 @@ public class UserServiceImp implements IUserService, UserDetailsService {
     @Override
     public User create(User user) {
         if(repository.findByEmail(user.getEmail())==null){
+            /*
+            Guardamos la contraseña del usuario cifrada almacenando un hash en vez de la
+            contraseña en texto plano
+             */
+            user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             user = repository.save(user);
         }
         return user;
