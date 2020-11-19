@@ -23,12 +23,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/","/users/new","/login","/logout").permitAll()
+                .antMatchers("/","/users/new","/login","/logout", "/users/index").permitAll()
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
-                .and().formLogin().permitAll();
+                .and().formLogin()
+                        .permitAll()
+                        .successForwardUrl("/users/");
         http.authorizeRequests()
+
                 .antMatchers("/**")
                 .access("hasRole('ROLE_USER')");
+        http
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login");
     }
     /*
     La notación Bean es para inyectar una dependencia a nivel de sistema

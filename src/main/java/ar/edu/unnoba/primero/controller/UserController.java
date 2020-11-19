@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+
 @Controller
 @RequestMapping("/users")
 public class UserController {
@@ -21,11 +23,17 @@ public class UserController {
         this.userService = userService;
     }
 
+
     @GetMapping("/new")
     public String userNew(Model model){
         model.addAttribute("user",new User());
         return "/users/new";
     }
+    @GetMapping("")
+    public String index(){
+        return "/users/index";
+    }
+
 
     @PostMapping
     public String create(@ModelAttribute User user){
@@ -33,4 +41,5 @@ public class UserController {
         return "redirect:/users";
     }
 }
+
 

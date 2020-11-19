@@ -9,11 +9,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImp implements IUserService, UserDetailsService {
 
     @Autowired
     private UserRepository repository;
+
+    @Override
+    public List<User> getUsers() {
+        return repository.findAll();
+    }
 
     @Override
     public User create(User user) {
@@ -43,6 +50,7 @@ public class UserServiceImp implements IUserService, UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return repository.findByEmail(email);
     }
+
 }
 
 
