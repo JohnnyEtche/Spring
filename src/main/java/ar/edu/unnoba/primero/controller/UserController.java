@@ -28,7 +28,7 @@ public class UserController {
     @GetMapping("/new")
     public String userNew(Model model){
         model.addAttribute("user",new User());
-        return "/users/new";
+        return "/users/new2";
     }
     @GetMapping("")
     public String index(Authentication authentication){
@@ -38,11 +38,11 @@ public class UserController {
 
 
 
-    @PostMapping
+    @PostMapping("/new")
     public String create(@ModelAttribute User user){
 
         userService.create(user);
-        return "redirect:/users";
+        return "redirect:/";
     }
 }
 
