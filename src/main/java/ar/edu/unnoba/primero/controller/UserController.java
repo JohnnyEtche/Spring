@@ -3,6 +3,7 @@ package ar.edu.unnoba.primero.controller;
 import ar.edu.unnoba.primero.Modelo.User;
 import ar.edu.unnoba.primero.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +31,16 @@ public class UserController {
         return "/users/new";
     }
     @GetMapping("")
-    public String index(){
+    public String index(Authentication authentication){
+        User sessionUser = (User)authentication.getPrincipal();
         return "/users/index";
     }
 
 
+
     @PostMapping
     public String create(@ModelAttribute User user){
+
         userService.create(user);
         return "redirect:/users";
     }
