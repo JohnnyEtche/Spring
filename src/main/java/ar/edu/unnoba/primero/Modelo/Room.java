@@ -10,9 +10,9 @@ public class Room {
     private long room_id;
     private String name;
     private float price;
-    private int avaiability;
+    private int availability;
     private String facilities;
-
+    private int occupancy;
     public long getRoom_id() {
         return room_id;
     }
@@ -37,19 +37,27 @@ public class Room {
         this.price = price;
     }
 
-    public int getAvaiability() {
-        return avaiability;
-    }
-
-    public void setAvaiability(int avaiability) {
-        this.avaiability = avaiability;
-    }
-
     public String getFacilities() {
         return facilities;
     }
 
     public void setFacilities(String facilities) {
         this.facilities = facilities;
+    }
+
+    public int getOccupancy() {
+        return occupancy;
+    }
+
+    public void setOccupancy(int occupancy) {
+        this.occupancy = occupancy;
+    }
+
+    public int getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(int availability) {
+        this.availability = availability;
     }
 }

@@ -31,8 +31,9 @@ public class UserController {
         return "/users/new2";
     }
     @GetMapping("")
-    public String index(Authentication authentication){
+    public String index(Authentication authentication, Model model){
         User sessionUser = (User)authentication.getPrincipal();
+        model.addAttribute("sessionUser",sessionUser);
         return "/users/index";
     }
 
