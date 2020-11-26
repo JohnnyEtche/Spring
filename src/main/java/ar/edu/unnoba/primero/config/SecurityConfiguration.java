@@ -25,12 +25,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/","/users/new","/login", "/users/index", "/css/**", "/lib/**", "/js/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .and().formLogin()
-                        .permitAll()
-                        .successForwardUrl("/users/");
+                        .permitAll();
         http.authorizeRequests()
 
                 .antMatchers("/**")
-                .access("hasRole('ROLE_USER')");
+                .access("hasRole('USER')");
         http
                 .logout()
                 .logoutUrl("/logout")
