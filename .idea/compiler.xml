@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="primero" target="11" />
+      <module name="primero" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
