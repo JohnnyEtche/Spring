@@ -1,5 +1,7 @@
 package ar.edu.unnoba.primero.controller;
 
+import ar.edu.unnoba.primero.DTO.NewBookingRequestDTO;
+import ar.edu.unnoba.primero.DTO.NewBookingResponseDTO;
 import ar.edu.unnoba.primero.DTO.RoomAvailabilityDTO;
 import ar.edu.unnoba.primero.DTO.RoomDTO;
 import ar.edu.unnoba.primero.Modelo.Room;

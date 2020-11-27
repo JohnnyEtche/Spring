@@ -43,6 +43,10 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.2.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.30" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:5.2.10.RELEASE" />
+          <element id="library" level="project" name="Maven: org.modelmapper.extensions:modelmapper-spring:2.3.0" />
+          <element id="library" level="project" name="Maven: org.webjars:bootstrap:4.0.0-2" />
+          <element id="library" level="project" name="Maven: org.webjars:jquery:3.0.0" />
+          <element id="library" level="project" name="Maven: org.webjars:popper.js:1.12.9-1" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.3.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:2.3.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.3.5.RELEASE" />
