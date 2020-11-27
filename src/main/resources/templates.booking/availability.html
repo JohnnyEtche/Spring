@@ -23,5 +23,44 @@
             <button type="submit" name="availability">Ver disponibilidad</button>
         </form>
     </div>
+    <div class="container">
+        <table>
+            <thead>
+                <th>Cuarto</th>
+                <th>Occupancy</th>
+                <th>Facilities</th>
+                <th>Price</th>
+            </thead>
+            <tbody>
+
+                <tr th:each="room : ${rooms}">
+                    <td>
+                        <span th:text="${room.name}">
+                            Room
+                        </span>
+                    </td>
+                    <td>
+                        <span th:text="${room.occupancy}">
+                            Occupancy
+                        </span>
+                    </td>
+                    <td>
+                        <span th:text="${room.facilities}">
+                            Facilities
+                        </span>
+                    </td>
+                    <td>
+                        <span th:text="${room.price}">
+                            Price
+                        </span>
+                    </td>
+                    <td>
+                        Book
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

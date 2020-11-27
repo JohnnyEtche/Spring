@@ -36,7 +36,7 @@ public class BookingController {
         return "../templates.booking/availability";
     }
 
-    @PostMapping("/booking")
+    @PostMapping("/availability")
     public String checkAvailability(@ModelAttribute RoomAvailabilityDTO roomAvailabilityDTO, Model model){
         List <Room> rooms = new ArrayList<>();
         try{
