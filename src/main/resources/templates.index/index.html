@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,12 +47,12 @@
         <a class="nav-link" href="#">Ofertas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/users/new">Registrarse</a>
+        <a class="nav-link" href="/users/new">Registrar Usuario</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" sec:authorize="isAnonymous()">
         <a class="nav-link" href="/login">Iniciar Sesión</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" sec:authorize="!isAnonymous()">
         <a class="nav-link" href="/logout">Cerrar Sesión</a>
       </li>
     </ul>
