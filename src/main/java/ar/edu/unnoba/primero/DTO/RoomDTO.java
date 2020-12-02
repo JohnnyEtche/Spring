@@ -3,11 +3,20 @@ package ar.edu.unnoba.primero.DTO;
 import java.io.Serializable;
 
 public class RoomDTO implements Serializable {
+    private long room_id;
     private String name;
     private long price;
     private long availability;
     private String facilities;
     private long occupancy;
+
+    public long getId() {
+        return room_id;
+    }
+
+    public void setId(long id) {
+        this.room_id = id;
+    }
 
     public String getName() {
         return name;

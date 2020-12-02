@@ -67,7 +67,13 @@
                         </span>
                     </td>
                     <td>
-                        Book
+                        <form action="#" th:action="@{/booking/new}" th:object="${booking}" method="post">
+                            <input type="hidden" th:name="checkin" th:value="${roomsAvailability.checkin}"/>
+                            <input type="hidden" th:name="checkout" th:value="${roomsAvailability.checkout}"/>
+                            <input type="hidden" th:name="checkout" th:value="${roomsAvailability.capacity}"/>
+                            <input type="hidden" th:name="id" th:value="${room.id}"/>
+                            <button type="submit" name="reserve">Reserve</button>
+                        </form>
                     </td>
 
                 </tr>

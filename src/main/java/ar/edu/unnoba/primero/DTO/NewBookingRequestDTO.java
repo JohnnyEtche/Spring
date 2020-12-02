@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 
 public class NewBookingRequestDTO {
         private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        private int roomId;
+        private long roomId;
         private String CheckIn;
         private String CheckOut;
         private int occupancy;
@@ -13,11 +13,11 @@ public class NewBookingRequestDTO {
             return dateFormat;
         }
 
-    public int getRoomId() {
+    public long getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(int roomId) {
+    public void setRoomId(long roomId) {
         this.roomId = roomId;
     }
 

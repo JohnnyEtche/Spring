@@ -1,9 +1,6 @@
 package ar.edu.unnoba.primero.controller;
 
-import ar.edu.unnoba.primero.DTO.NewBookingRequestDTO;
-import ar.edu.unnoba.primero.DTO.NewBookingResponseDTO;
-import ar.edu.unnoba.primero.DTO.RoomAvailabilityDTO;
-import ar.edu.unnoba.primero.DTO.RoomDTO;
+import ar.edu.unnoba.primero.DTO.*;
 import ar.edu.unnoba.primero.Modelo.Room;
 import ar.edu.unnoba.primero.service.RoomService;
 import org.modelmapper.ModelMapper;
@@ -54,6 +51,23 @@ public class BookingController {
                 .collect(Collectors.toList());
         model.addAttribute("rooms", roomsDTO);
         model.addAttribute("roomsAvailability", roomAvailabilityDTO);
+        model.addAttribute("booking", new NewBookingRequestDTO());
+        return "../templates.booking/availability";
+    }
+    @PostMapping("/new")
+    public String newBooking(@ModelAttribute NewBookingRequestDTO newBookingRequestDTO, Model model){
+        NewBookingResponseDTO booking = new NewBookingResponseDTO();
+        RoomDTO roomDTO = modelMapper.map(roomService.findById(newBookingRequestDTO.getRoomId()).get(), RoomDTO.class);
+        booking.setRoom(roomDTO);
+        booking.setCheckIn(newBookingRequestDTO.getCheckIn());
+        booking.setCheckOut(newBookingRequestDTO.getCheckOut());
+        booking.setOccupancy(newBookingRequestDTO.getOccupancy());
+        model.addAttribute("booking",booking);
+        return "../templates.booking/new";
+    }
+    @PostMapping("/confirm")
+    public String createBooking(@ModelAttribute ConfirmBookingRequestDTO confirmBookingRequestDTO){
         return "../templates.booking/availability";
     }
 }
+
