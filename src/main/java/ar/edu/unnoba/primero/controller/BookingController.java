@@ -56,13 +56,13 @@ public class BookingController {
     }
     @PostMapping("/new")
     public String newBooking(@ModelAttribute NewBookingRequestDTO newBookingRequestDTO, Model model){
-        NewBookingResponseDTO booking = new NewBookingResponseDTO();
+        NewBookingResponseDTO book = new NewBookingResponseDTO();
         RoomDTO roomDTO = modelMapper.map(roomService.findById(newBookingRequestDTO.getRoomId()).get(), RoomDTO.class);
-        booking.setRoom(roomDTO);
-        booking.setCheckIn(newBookingRequestDTO.getCheckIn());
-        booking.setCheckOut(newBookingRequestDTO.getCheckOut());
-        booking.setOccupancy(newBookingRequestDTO.getOccupancy());
-        model.addAttribute("booking",booking);
+        book.setRoom(roomDTO);
+        book.setCheckIn(newBookingRequestDTO.getCheckIn());
+        book.setCheckOut(newBookingRequestDTO.getCheckOut());
+        book.setOccupancy(newBookingRequestDTO.getOccupancy());
+        model.addAttribute("book",book);
         return "../templates.booking/new";
     }
     @PostMapping("/confirm")

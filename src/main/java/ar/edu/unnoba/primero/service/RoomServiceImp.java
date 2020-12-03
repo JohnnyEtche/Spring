@@ -25,6 +25,6 @@ public class RoomServiceImp implements RoomService {
 
     @Override
     public Optional<Room> findById(Long roomId) {
-        return Optional.empty();
+        return repository.findById(roomId);
     }
 }

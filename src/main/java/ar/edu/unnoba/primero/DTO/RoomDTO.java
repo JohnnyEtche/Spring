@@ -10,11 +10,11 @@ public class RoomDTO implements Serializable {
     private String facilities;
     private long occupancy;
 
-    public long getId() {
+    public long getRoom_id() {
         return room_id;
     }
 
-    public void setId(long id) {
+    public void setRoom_id(long id) {
         this.room_id = id;
     }
 
