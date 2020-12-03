@@ -1,10 +1,14 @@
 package ar.edu.unnoba.primero.controller;
 
 import ar.edu.unnoba.primero.DTO.*;
+import ar.edu.unnoba.primero.Modelo.Booking;
 import ar.edu.unnoba.primero.Modelo.Room;
+import ar.edu.unnoba.primero.Modelo.User;
+import ar.edu.unnoba.primero.service.BookingService;
 import ar.edu.unnoba.primero.service.RoomService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +26,12 @@ public class BookingController {
 
     private RoomService roomService;
     private ModelMapper modelMapper;
-
+    private BookingService bookingService;
     @Autowired
-    public BookingController(RoomService roomService, ModelMapper modelMapper) {
+    public BookingController(RoomService roomService, ModelMapper modelMapper, BookingService bookingService) {
         this.roomService = roomService;
         this.modelMapper = modelMapper;
+        this.bookingService = bookingService;
     }
 
     @GetMapping("/availability")
@@ -66,8 +71,25 @@ public class BookingController {
         return "../templates.booking/new";
     }
     @PostMapping("/confirm")
-    public String createBooking(@ModelAttribute ConfirmBookingRequestDTO confirmBookingRequestDTO){
-        return "../templates.booking/availability";
+    public String createBooking(@ModelAttribute ConfirmBookingRequestDTO confirmBookingRequestDTO, Authentication authentication, Model model){
+        Booking booking = modelMapper.map(confirmBookingRequestDTO, Booking.class);
+        booking.setBooking_id(1);
+        booking.setGuest((User)authentication.getPrincipal());
+        try{
+            bookingService.newBooking(booking);
+            return "redirect:/booking/confirmed";
+        } catch (Exception e) {
+            return "redirect:/booking/error";
+        }
+    }
+    @GetMapping("/confirmed")
+    public String bookingConfirmed(){
+        return "../templates.booking/confirmed";
+    }
+
+    @GetMapping("/error")
+    public String bookingError(){
+        return "../templates.booking/error";
     }
 }
 
