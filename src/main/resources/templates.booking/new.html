@@ -8,6 +8,13 @@
     <div>
         <h2>New booking</h2>
         <label>Room: </label><span th:text="${book.room.name}"></span>
+        <form action="#" th:action="@{/booking/confirm}" th:object="${book}" method="post">
+            <input type="hidden" th:name="CheckIn" th:value="${book.checkIn}"/>
+            <input type="hidden" th:name="CheckOut" th:value="${book.checkOut}"/>
+            <input type="hidden" th:name="ocuppancy" th:value="${book.occupancy}"/>
+            <input type="hidden" th:name="roomId" th:value="${book.room.room_id}"/>
+            <button type="submit" name="confirm">Confirm Booking</button>
+        </form>
     </div>
 </body>
 </html>
