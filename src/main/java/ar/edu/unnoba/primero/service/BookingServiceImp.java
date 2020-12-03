@@ -22,10 +22,10 @@ public class BookingServiceImp implements BookingService{
     @Override
     @Transactional
     public Booking newBooking(Booking booking) throws Exception {
-        Room room = roomRepository.isRoomAvailable(booking.getCheckIn(),booking.getCheckout(),booking.getRoom().getRoom_id());
-        if(booking.getCheckIn().before(new Date()) || booking.getCheckIn().after(booking.getCheckout())){
+        Room room = this.roomRepository.isRoomAvailable(booking.getCheckIn(),booking.getCheckout(),booking.getRoom().getRoom_id());
+        /*if(booking.getCheckIn().before(new Date()) || booking.getCheckIn().after(booking.getCheckout())){
             throw new Exception("Algo ha salido mal pa");
-        }
+        }*/
         if(room!=null){
             booking.setRoom(room);
             booking.setCost(booking.getRoom().getPrice());
